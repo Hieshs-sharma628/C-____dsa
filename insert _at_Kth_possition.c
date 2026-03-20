@@ -6,7 +6,7 @@ struct node{
 }*start;
 void create_list(int n);
 void travers_list();
-void insert_at_end();
+void insert_at_k();
 int main(){
     int n;
     printf("\nEnter the numbers of node::");
@@ -19,7 +19,7 @@ int main(){
     else{
         create_list(n);
     }
-    insert_at_end();
+    insert_at_k();
     printf("\nList is :: \n");
     travers_list();
     return 0;
@@ -55,11 +55,14 @@ void create_list(int n){
         }
     }
 }
-void insert_at_end()
+void insert_at_k()
 {
     struct node *newnode,*temp,*ptr;
+    int k;
+    printf("\nEnter the posstion of data to be inserted at k possition::");
+    scanf("%d",&k);
     ptr =start;
-    while(ptr !=  NULL)
+    for(int i=1;i<k;i++)
     {
         temp = ptr;
         ptr = ptr -> next;
@@ -74,7 +77,7 @@ void insert_at_end()
     newnode = (struct node *)malloc(sizeof(struct node));
     printf("\nEnter the data to be inserted at end::");
     scanf("%d",&newnode -> data);
-    newnode -> next = NULL;
+    newnode -> next =ptr;
     temp -> next =newnode;
     }
 }
