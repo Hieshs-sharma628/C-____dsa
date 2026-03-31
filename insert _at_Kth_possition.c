@@ -58,28 +58,44 @@ void create_list(int n){
 void insert_at_k()
 {
     struct node *newnode,*temp,*ptr;
-    int k;
-    printf("\nEnter the posstion of data to be inserted at k possition::");
+    int k, i;
+    printf("\nEnter the position to insert the new node::");
     scanf("%d",&k);
-    ptr =start;
-    for(int i=1;i<k;i++)
-    {
-        temp = ptr;
-        ptr = ptr -> next;
+
+    if (k <= 0) {
+        printf("\nInvalid position. Position must be greater than 0.\n");
+        return;
     }
+
+    newnode = (struct node *)malloc(sizeof(struct node));
     if(newnode == NULL)
     {
         printf("\nMemory allocation failed!!\n");
-        exit(0);
+        return;
     }
-    else
-    {
-    newnode = (struct node *)malloc(sizeof(struct node));
-    printf("\nEnter the data to be inserted at end::");
+
+    printf("\nEnter the data to be inserted at position %d::", k);
     scanf("%d",&newnode -> data);
-    newnode -> next =ptr;
-    temp -> next =newnode;
+
+    if (k == 1) {
+        newnode->next = start;
+        start = newnode;
+        return;
     }
+
+    ptr = start;
+    for(i = 1; i < k - 1 && ptr != NULL; i++) {
+        ptr = ptr->next;
+    }
+
+    if (ptr == NULL) {
+        printf("\nPosition %d is out of bounds!\n", k);
+        free(newnode);
+        return;
+    }
+
+    newnode->next = ptr->next;
+    ptr->next = newnode;
 }
 void travers_list()
 {

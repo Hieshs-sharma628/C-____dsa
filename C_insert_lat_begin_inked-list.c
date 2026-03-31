@@ -66,7 +66,7 @@ void insert_at_begin()
     else
     {
     newnode = (struct node *)malloc(sizeof(struct node));
-    printf("\nEnter the data to be inserted at end::");
+    printf("\nEnter the data to be inserted at begin::");
     scanf("%d",&newnode -> data);
     newnode -> next = start;
     start = newnode;

@@ -2,6 +2,7 @@
 #include<stdlib.h>
 struct node  {
     int data;
+    struct node *prev;
     struct node *next;
 } *start,*newnode,*temp,*ptr;
 void create_list(int n);
@@ -21,6 +22,13 @@ int main(){
     }
     printf("\nlist is::\n");
     travers_list();
+    
+    ptr = start;
+    while(ptr != NULL) {
+        temp = ptr->next;
+        free(ptr);
+        ptr = temp;
+    }
 return 0;
 }
 //create a new node
@@ -37,6 +45,7 @@ void create_list(int n)
         {
             printf("Enter the data of node 1::");
             scanf("%d",&start -> data);
+            start ->prev =NULL;
             start ->next =NULL;
             temp=start;
         }
@@ -52,6 +61,7 @@ void create_list(int n)
             printf("\nEnter the data of nodes %d::",i);
             scanf("%d",&newnode->data);
             newnode->next=NULL;
+            temp -> prev = temp;
             temp -> next = newnode;
             temp =newnode;
         }
