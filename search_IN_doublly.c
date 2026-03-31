@@ -2,10 +2,12 @@
 #include<stdlib.h>
 struct node  {
     int data;
+    struct node *prev;
     struct node *next;
 } *start,*newnode,*temp,*ptr;
 void create_list(int n);
 void travers_list();
+int search(int);
 int main(){
     int n;
     printf("\nEnter the numbers of node::");
@@ -18,9 +20,17 @@ int main(){
     else
     {
         create_list(n);
-    }
     printf("\nlist is::\n");
     travers_list();
+    int item,loc;
+    printf("\nEnter the number to search::");
+    scanf("%d",&item);
+    loc=search(item);
+    if(loc == 0)
+    printf("\nElement Not found");
+    else
+    printf("\nElement found at position %d", loc);
+    }
 return 0;
 }
 //create a new node
@@ -37,6 +47,7 @@ void create_list(int n)
         {
             printf("Enter the data of node 1::");
             scanf("%d",&start -> data);
+            start ->prev =NULL;
             start ->next =NULL;
             temp=start;
         }
@@ -52,6 +63,7 @@ void create_list(int n)
             printf("\nEnter the data of nodes %d::",i);
             scanf("%d",&newnode->data);
             newnode->next=NULL;
+            newnode -> prev = temp;
             temp -> next = newnode;
             temp =newnode;
         }
@@ -75,4 +87,26 @@ void travers_list()
            
         }
     }
+}
+int search(int item)
+{
+    int k,loc;
+    struct node *ptr;
+    k=1;
+    loc=0;
+    ptr=start;
+    while( ptr != NULL)
+    {
+        if(ptr->data == item)
+        {
+            loc = k;
+            break;
+        }
+        else
+        {
+            k++;
+            ptr=ptr->next;
+        }
+    }
+    return loc;
 }
