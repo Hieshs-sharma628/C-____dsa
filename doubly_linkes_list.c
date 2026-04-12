@@ -22,13 +22,6 @@ int main(){
     }
     printf("\nlist is::\n");
     travers_list();
-    
-    ptr = start;
-    while(ptr != NULL) {
-        temp = ptr->next;
-        free(ptr);
-        ptr = temp;
-    }
 return 0;
 }
 //create a new node
