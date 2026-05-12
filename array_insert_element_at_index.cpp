@@ -19,7 +19,7 @@ int main()
     {
         arr[i+1]=arr[i];
     }
-    arr[insert_index]=insert_num;
+    arr[insert_index]=insert_num;//insert element
     arr_size=arr_size+1;
     cout<<"\nAfter insertion array is::";//displaying result
     for(i=0;i<arr_size;i++)

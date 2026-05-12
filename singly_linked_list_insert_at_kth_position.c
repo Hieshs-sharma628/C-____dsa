@@ -6,7 +6,7 @@ struct node{
 }*start;
 void create_list(int n);
 void travers_list();
-void delete_at_k();
+void insert_at_k();
 int main(){
     int n;
     printf("\nEnter the numbers of node::");
@@ -19,7 +19,7 @@ int main(){
     else{
         create_list(n);
     }
-    delete_at_k();
+    insert_at_k();
     printf("\nList is :: \n");
     travers_list();
     return 0;
@@ -55,11 +55,11 @@ void create_list(int n){
         }
     }
 }
-void delete_at_k()
+void insert_at_k()
 {
     struct node *newnode,*temp,*ptr;
     int k, i;
-    printf("\nEnter the position to delete the new node::");
+    printf("\nEnter the position to insert the new node::");
     scanf("%d",&k);
 
     if (k <= 0) {
@@ -74,7 +74,7 @@ void delete_at_k()
         return;
     }
 
-    printf("\nEnter the data to be deleteed at position %d::", k);
+    printf("\nEnter the data to be inserted at position %d::", k);
     scanf("%d",&newnode -> data);
 
     if (k == 1) {
