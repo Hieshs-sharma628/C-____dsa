@@ -1,20 +1,19 @@
 #include<stdio.h>
 int fib[20],n;
-void fibnoci();	
+int fibnoci(int n);	
 int main(){
 	printf("\nEnter the number of terms to print in Fibonacci series::");
 	scanf("%d",&n);
-	fibnoci();
+	fibnoci(n);
 	printf("\nFibonacci series is::\n");
 	for(int i=0;i<n;i++){
 		printf("%d\n",fib[i]);
 	}
 	return 0;
 }
-void fibnoci(){
-	fib[0]=0;
-	fib[1]=1;
-	for(int i=2;i<n;i++){
-		fib[i]=fib[i-1]+fib[i-2];
-	}
+int fibnoci(int n){
+	if(n==0 || n==1)
+		return n;
+	else 
+		return (fibnoci(n+1)+fibnoci(n+2));
 }
